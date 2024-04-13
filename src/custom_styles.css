@@ -1,0 +1,35 @@
+/* Header styles */
+.gradio-header {
+    background-color: #f0f0f0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.gradio-container {
+    background-image: url('https://img2.chinadaily.com.cn/images/202303/28/64225fcfa31057c4b4b8180d.jpeg');
+    width: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gradio-title{
+    color: #f0f0f0; 
+    font-size: 32px; 
+    font-family: Lucida Handwriting, cursive; 
+    font-weight: bold;
+}
+
+.gradio-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/IMWUC/UploadedImages/FUljcS59RIu0WJ2blQaS_Platform%20Banner-L.png');
+    background-size: cover;
+    background-position: center;
+}

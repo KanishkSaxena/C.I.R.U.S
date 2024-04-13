@@ -1,0 +1,10 @@
+# Ignore the .idea folder
+.idea/
+
+# Ignore the venv folder (assuming it's your virtual environment)
+venv/
+
+# Ignore the C.I.R.U.s.iml file
+C.I.R.U.s.iml
+
+db/
