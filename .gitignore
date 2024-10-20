@@ -8,3 +8,4 @@ venv/
 C.I.R.U.s.iml
 
 db/
+.env

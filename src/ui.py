@@ -3,10 +3,10 @@ from functools import partial
 from src.utils.vector_db import *
 from src.utils.query_utils import *
 from src.utils.prompt_builder import make_prompt
-from config import send_to_openai_gpt
 from langchain.globals import get_llm_cache,set_llm_cache
 from src.utils.similarity_score import get_top_5_chunks
 from langchain.cache import InMemoryCache
+from config import generate_response
 
 
 def process_question(vector_dbs, question, slider):
@@ -50,7 +50,7 @@ def process_question(vector_dbs, question, slider):
 
     print("PROMPT-----------------", prompt)
 
-    response = send_to_openai_gpt(prompt, model_name="gpt2", max_length=slider)
+    response = generate_response(prompt)
 
     cache.update(question, "", response)
 
@@ -60,10 +60,7 @@ def process_question(vector_dbs, question, slider):
 def launch_gradio_interface(vector_dbs):
     iface = gr.Interface(
         fn=partial(process_question, vector_dbs),
-        inputs=[gr.Textbox(lines=1, label="Question"), gr.Slider(label="Max new tokens",
-                                                                 value=20,
-                                                                 maximum=1024,
-                                                                 minimum=1)],
+        inputs=[gr.Textbox(lines=4, label="Question")],
         outputs=[gr.Textbox(lines=4, label="Response")],
         title="C.I.R.U.S",
         description="<span style = 'size: 24px'>Enter your question and get the answer.</span>",
@@ -74,4 +71,4 @@ def launch_gradio_interface(vector_dbs):
             ["Author of 'To Kill a Mockingbird'?"]
         ]
     )
-    iface.launch()
+    return iface

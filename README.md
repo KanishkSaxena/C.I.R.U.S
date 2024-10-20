@@ -13,7 +13,17 @@ Use an existing venv or create a new venv with all the dependecies in 'requireme
 pip intsall -r requirements_venv.txt
 ```
 
-Run the project using python3 main.py and access the url generated in the terminal to enter the question.
+## Storing Secret
+
+```
+cp env_template.txt .env
+```
+
+Run the project using fastAPI() and access the url generated in the terminal to enter the question.
+
+```
+uvicorn main:app --reload
+```
 
 ## Contribution
 

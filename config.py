@@ -1,29 +1,21 @@
 from langchain.globals import set_llm_cache
 from langchain.cache import InMemoryCache
-from transformers import pipeline
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 set_llm_cache(InMemoryCache())
 
+import openai
 
-def send_to_openai_gpt(prompts, model_name="gpt2", max_length=100):
-    """
-    Helper function for sending prompts to an open-source model (e.g., GPT-2).
+openai.api_key = os.getenv("API_KEY")
 
-    Args:
-        prompts: List of text prompts
-        model_name: Name of the pre-trained model (e.g., "gpt2")
-        max_length: Maximum length of the generated response
-
-    Returns:
-        List of generated responses corresponding to the prompts
-    """
-    # Load the pre-trained model
-    model = pipeline("text-generation", model=model_name)
-
-    # Generate responses for each prompt
-    responses = []
-    for prompt in prompts:
-        response = model(prompt, max_length=max_length, num_return_sequences=1)[0]['generated_text']
-        responses.append(response)
-
-    return responses
+def generate_response(prompt):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", 
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
+    )
+    return response['choices'][0]['message']['content']
