@@ -28,3 +28,26 @@ uvicorn main:app --reload
 ## Contribution
 
 Pull requests are welcome. Please create your own branch with your name from main branch.
+
+
+
+## Docker Setup
+1. Prerequisites
+Ensure you have Docker installed on your system.
+
+2. Build the Docker Image
+To build the Docker image for the application, run the following command from the project’s root directory:
+
+```
+docker build -t fastapi-gradio-app .
+```
+
+3. Run the Docker Container
+To run the application inside a Docker container and expose it on port 8000, use the following command:
+
+```
+docker run -p 8000:8000 fastapi-gradio-app
+```
+4. Test the Application
+  *Open a browser and go to http://localhost:8000 to verify that FastAPI is running.
+  *Go to http://localhost:8000/gradio to test the Gradio interface.
